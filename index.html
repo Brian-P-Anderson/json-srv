@@ -162,11 +162,11 @@ if ($navbarBurgers.length > 0) {
 });
 
 let uD = document.getElementById('userData');
-
+let strUD = ``;
 axios.get('http://localhost:3000/users')
   .then(resp => {
     data = resp.data;
-    let strUD = `
+    strUD = `
 <div class="columns">
 <div class="column">
     `;
@@ -186,13 +186,13 @@ axios.get('http://localhost:3000/users')
     </div>
   </div>
       `;
-    };
+    });
     strUD += `</div></div>`;
-    );
   })
   .catch(error => {
     console.log(error);
   });
+  uD.innerHTML = strUD;
 </script>
 </body>
 </html>
