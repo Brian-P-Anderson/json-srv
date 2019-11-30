@@ -132,6 +132,7 @@
     <a class="button is-primary">Primary</a>
     <a class="button is-link">Link</a>
   </div>
+
 <!-- cards ---------------------------------------------------------------------------------------------->
 <div id="userData" class="container is-fluid"></div>
 <!-- /cards --------------------------------------------------------------------------------------------->
@@ -168,11 +169,11 @@ axios.get('http://localhost:3000/users')
   .then(resp => {
     data = resp.data;
     strUD = `
-<div class="columns is-multiline">
+<div class="columns is-multiline" style="display: flex; flex-wrap: wrap;">
     `;
     data.forEach(e => {
       strUD += `
-<div class="column is-one-quarter is-narrow">
+<div class="column is-one-quarter" style="width: 300px;">
   <div class="card">
     <div class="card-content">
       <h2 class="title">
@@ -182,8 +183,8 @@ axios.get('http://localhost:3000/users')
           ${e.last_name}
       </h3>
     </div>
-    <div class="card-footer">
-      <span class="is_6">${e.email}</span>
+    <div class="card-footer" style="margin: 2px;">
+      <p class="is_6" style="margin-left: 0.5em"> ${e.email}</p>
     </div>
   </div>
 </div>
