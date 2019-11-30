@@ -43,7 +43,6 @@
   </div>
 </section>
 <!-- /hero --------------------------------------------------------------------------------------------->
-<!-- cards ---------------------------------------------------------------------------------------------->
   <nav class="navbar" role="navigation" aria-label="main navigation">
     <div class="navbar-brand">
       <a class="navbar-item" href="https://bulma.io">
@@ -133,7 +132,9 @@
     <a class="button is-primary">Primary</a>
     <a class="button is-link">Link</a>
   </div>
-  <div id="userData"></div>
+<!-- cards ---------------------------------------------------------------------------------------------->
+<div id="userData"></div>
+<!-- /cards --------------------------------------------------------------------------------------------->
 <script src="./node_modules/axios/dist/axios.min.js"></script>
 <script>
 document.addEventListener('DOMContentLoaded', () => {
@@ -188,11 +189,11 @@ axios.get('http://localhost:3000/users')
       `;
     });
     strUD += `</div></div>`;
+    uD.innerHTML = strUD;
   })
   .catch(error => {
     console.log(error);
   });
-  uD.innerHTML = strUD;
 </script>
 </body>
 </html>
