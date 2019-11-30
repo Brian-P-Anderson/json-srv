@@ -133,9 +133,7 @@
     <a class="button is-primary">Primary</a>
     <a class="button is-link">Link</a>
   </div>
-  <div id="userData">
-
-  </div>
+  <div id="userData"></div>
 <script src="./node_modules/axios/dist/axios.min.js"></script>
 <script>
 document.addEventListener('DOMContentLoaded', () => {
@@ -163,16 +161,38 @@ if ($navbarBurgers.length > 0) {
 }
 });
 
+let uD = document.getElementById('userData');
+
 axios.get('http://localhost:3000/users')
-    .then(resp => {
-        data = resp.data;
-        data.forEach(e => {
-            console.log(`${e.first_name}, ${e.last_name}, ${e.email}`);
-        });
-    })
-    .catch(error => {
-        console.log(error);
-    });
+  .then(resp => {
+    data = resp.data;
+    let strUD = `
+<div class="columns">
+<div class="column">
+    `;
+    data.forEach(e => {
+      strUD += `
+  <div class="card">
+    <div class="card-content">
+      <h2 class="title">
+        ${e.first_name}
+      </h2>
+      <h3 class="subtitle">
+          ${e.last_name}
+      </h3>
+    </div>
+    <div class="card-footer">
+      <span class="is_6">${e.email}</span>
+    </div>
+  </div>
+      `;
+    };
+    strUD += `</div></div>`;
+    );
+  })
+  .catch(error => {
+    console.log(error);
+  });
 </script>
 </body>
 </html>
