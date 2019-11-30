@@ -133,7 +133,7 @@
     <a class="button is-link">Link</a>
   </div>
 <!-- cards ---------------------------------------------------------------------------------------------->
-<div id="userData"></div>
+<div id="userData" class="container"></div>
 <!-- /cards --------------------------------------------------------------------------------------------->
 <script src="./node_modules/axios/dist/axios.min.js"></script>
 <script>
@@ -169,10 +169,10 @@ axios.get('http://localhost:3000/users')
     data = resp.data;
     strUD = `
 <div class="columns">
-<div class="column">
     `;
     data.forEach(e => {
       strUD += `
+<div class="column">
   <div class="card">
     <div class="card-content">
       <h2 class="title">
@@ -186,9 +186,10 @@ axios.get('http://localhost:3000/users')
       <span class="is_6">${e.email}</span>
     </div>
   </div>
+</div>
       `;
     });
-    strUD += `</div></div>`;
+    strUD += `</div>`;
     uD.innerHTML = strUD;
   })
   .catch(error => {
