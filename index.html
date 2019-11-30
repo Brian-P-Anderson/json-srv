@@ -29,6 +29,21 @@
   </style>
 </head>
 <body>
+<!-- hero ---------------------------------------------------------------------------------------------->
+<section class="hero is-primary">
+  <div class="hero-body">
+    <div class="container">
+      <h1 id="headerHero" class="title is-1">
+        Coding Quotes
+      </h1>
+      <h2 id="subheadHero" class="subtitle is-4">
+        Like your favs
+      </h2>
+    </div>
+  </div>
+</section>
+<!-- /hero --------------------------------------------------------------------------------------------->
+<!-- cards ---------------------------------------------------------------------------------------------->
   <nav class="navbar" role="navigation" aria-label="main navigation">
     <div class="navbar-brand">
       <a class="navbar-item" href="https://bulma.io">
@@ -118,6 +133,10 @@
     <a class="button is-primary">Primary</a>
     <a class="button is-link">Link</a>
   </div>
+  <div id="userData">
+
+  </div>
+<script src="./node_modules/axios/dist/axios.min.js"></script>
 <script>
 document.addEventListener('DOMContentLoaded', () => {
 
@@ -143,6 +162,17 @@ if ($navbarBurgers.length > 0) {
   });
 }
 });
+
+axios.get('http://localhost:3000/users')
+    .then(resp => {
+        data = resp.data;
+        data.forEach(e => {
+            console.log(`${e.first_name}, ${e.last_name}, ${e.email}`);
+        });
+    })
+    .catch(error => {
+        console.log(error);
+    });
 </script>
 </body>
 </html>
